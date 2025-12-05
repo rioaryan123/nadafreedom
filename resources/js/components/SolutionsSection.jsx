@@ -46,7 +46,10 @@ const SolutionsSection = () => {
                 </div>
 
                 {/* --- FEATURES GRID --- */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24 w-full">
+                {/* PERUBAHAN 1: mb-0
+                    Menghilangkan margin bawah sepenuhnya pada grid fitur.
+                */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-0 w-full relative z-10">
                     {features.map((item) => (
                         <div key={item.id} className="flex flex-col items-center text-center px-2">
                             <div className="w-20 h-20 mb-6 flex items-center justify-center">
@@ -68,26 +71,27 @@ const SolutionsSection = () => {
             </div>
 
             {/* --- FOOTER BANNER (#FREEDOM) --- */}
-            <div className="relative w-full h-[362px] bg-white flex items-center justify-center mt-8">
+            {/* PERUBAHAN 2: -mt-10 (Margin Top Negatif)
+                Ini menarik container gambar ke ATAS sebanyak 10 unit (sekitar 40px).
+                Efeknya: Bagian atas gambar yang "pudar putih" akan menumpuk di bawah teks fitur,
+                sehingga tidak ada celah putih yang terlihat pisah.
+            */}
+            <div className="relative w-full h-[362px] bg-white flex items-center justify-center -mt-10 z-0">
                 
                 {/* Background Image Layer */}
                 <img 
-                    src="/images/bg.svg" // Ganti dengan nama file background Anda di folder public
+                    src="/images/bg.svg"
                     alt="Freedom Background"
-                    className="absolute inset-0 w-full h-full object-cover object-center z-0"
+                    className="absolute inset-0 w-full h-full object-cover object-center"
                 />
 
-                {/* --- MASKING GRADIENT UNTUK EFEK FADE --- */}
-                {/* Gradient Atas: Putih ke Transparan */}
-                <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-white to-transparent z-10"></div>
-                
-                {/* Gradient Bawah: Putih ke Transparan (opsional, jika ingin bawah juga memudar) */}
-                <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-white to-transparent z-10"></div>
-
+                {/* Masking Gradient */}
+                <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-white via-white/80 to-transparent z-10"></div>
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white via-white/80 to-transparent z-10"></div>
 
                 {/* Text Content */}
-                <div className="relative z-20 w-full px-4 flex justify-center">
-                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold italic tracking-tighter text-[#4facfe] drop-shadow-sm text-center">
+                <div className="relative z-20 w-full max-w-full px-4 flex justify-center items-center">
+                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold italic tracking-tighter custom-text-color drop-shadow-sm text-center leading-normal py-4 pr-6 w-auto">
                         #FREEDOM OF EXPRESSION
                     </h1>
                 </div>
